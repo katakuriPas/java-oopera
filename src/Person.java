@@ -1,8 +1,8 @@
 public class Person {
 
-    public String name;
-    public String surName;
-    public Gender gender;
+    protected String name;
+    protected String surName;
+    protected Gender gender;
 
     public Person(String name, String surName, Gender gender) {
         this.name = name;

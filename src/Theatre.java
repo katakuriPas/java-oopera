@@ -13,21 +13,25 @@ public class Theatre {
         Director directorSemchenkoS = new Director("Stanislav", "Semchenko",  Gender.MALE, 22);
         Director directorIvanovichP = new Director("Pyotr", "Ivanovich",  Gender.MALE, 44);
 
+        Person musicAuthorGromovaM = new Person("Maria", "Gromova", Gender.FEMALE);
+
+        Person choreographerSmirnovK = new Person("Konstantin", "Smirnov", Gender.MALE);
+
         // Создаем постановки
         Show classic = new Show("Dracula", 180, directorSemchenkoS);
         Opera opera = new Opera("King Stakh's Wild Hunt",
-                                120,
-                                directorSemchenkoS,
-                                "Maria Gromova",
-                                "XXX",
-                                30);
+                120,
+                directorSemchenkoS,
+                musicAuthorGromovaM,
+                "XXX",
+                30);
 
         Ballet ballet = new Ballet("Shchelkunchik",
-                                    220,
-                                    directorIvanovichP,
-                                    "Maria Gromova",
-                                    "YYY",
-                                    "Konstantin Smirnov");
+                220,
+                directorIvanovichP,
+                musicAuthorGromovaM,
+                "YYY",
+                choreographerSmirnovK);
 
         // Написал два метода для добавления актера: addActorObject(Actor actor) и addActor(Конструктор)
         // Добавляем актеров в классическую постановку
@@ -52,7 +56,7 @@ public class Theatre {
 
         // Вывод актеров
         System.out.println("---> Classic");
-        System.out.println(opera.toString());
+        System.out.println(classic.toString());
 
         System.out.println("---> Opera");
         System.out.println(opera.toString());
@@ -61,14 +65,13 @@ public class Theatre {
         System.out.println(ballet.toString());
 
         // Замена существующим актером из другой постановки
-        ballet.exchangeActorObject(actorPasP, actorIvanovA);
+        ballet.exchangeActorObject("Pas", "Pavel", actorIvanovA);
         System.out.println(ballet.toString());
 
-        // Замена совсем новым актером
-        ballet.exchangeActor("Smirnova", "Mariya", "Sofia", "Kuznetsova", Gender.FEMALE, 172);
-        System.out.println(ballet.toString());
-
-        ballet.exchangeActorObject(actorLebedevaY, actorIvanovA);
+        // Замена несуществующего актера
+        ballet.exchangeActorObject("Lebedeva", "Yekaterina", actorIvanovA);
         System.out.println(ballet.toString());
     }
 }
+
+

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Show {
-    public String title;
-    public int duration;
-    public Director director;
+    protected String title;
+    protected int duration;
+    protected Director director;
 
     ArrayList<Actor> listOfActors;
 
@@ -17,7 +17,7 @@ public class Show {
     @Override
     public String toString() {
         if(this.listOfActors.isEmpty()){
-            return "Actor list if empty";
+            return "❌ Actor list is empty";
         }
 
         String res = "";
@@ -32,7 +32,7 @@ public class Show {
         for (Actor actor : listOfActors) {
             if(actor.equals(newActor)) {
                 System.out.println("----------------------");
-                System.out.println("Takoy akter uzhe yest'" + "\n");
+                System.out.println("The actor is already on the list" + "\n");
                 return;
             }
         }
@@ -45,7 +45,7 @@ public class Show {
         for (Actor actor : listOfActors) {
             if(actor.equals(newActor)) {
                 System.out.println("----------------------");
-                System.out.println("Takoy akter uzhe yest'" + "\n");
+                System.out.println("The actor is already on the list" + "\n");
                 return null;
             }
         }
@@ -54,32 +54,52 @@ public class Show {
         return newActor;
     }
 
+    public void exchangeActorObject(String oldSurNameActor, String oldNameActor, Actor newActor) {
+        if (newActor == null) {
+            System.out.println("There is no such actor");
+            return;
+        }
+
+        String nonExistentActor = "";
+        for (int i = 0; i < listOfActors.size(); i++) {
+            if (oldSurNameActor.equals(listOfActors.get(i).surName) && oldNameActor.equals(listOfActors.get(i).name)) {
+                listOfActors.set(i, newActor);
+                System.out.println("✅ Actor (" + listOfActors.get(i).toString() + ") has been replaced " + newActor.toString());
+                return;
+            }
+        }
+        System.out.println("❌ No replacement actor " + oldSurNameActor + " " + oldNameActor + " has been found" + "\n");
+    }
+
+    /*
     public void exchangeActorObject(Actor oldActor, Actor newActor) {
         if (oldActor == null || newActor == null) {
-            System.out.println("Такого актера нет");
+            System.out.println("There is no such actor");
             return;
         }
         for (int i = 0; i < listOfActors.size(); i++) {
             if (listOfActors.get(i).equals(oldActor)) {
                 listOfActors.set(i, newActor);
-                System.out.println("Akter (" + oldActor.toString() + ") byl zamenen na " + newActor.toString());
+                System.out.println("Actor (" + oldActor.toString() + ") has been replaced " + newActor.toString());
                 return;
             }
         }
-        System.out.println("Akter dlya zameny ne naiden" + "\n");
+        System.out.println("No replacement actor has been found" + "\n");
     }
+    */
 
-
+    /*
     public void exchangeActor(String oldSurNameActor, String oldNameActor,
                               String newSurNameActor, String newNameActor, Gender gender, double height) {
         Actor newActor = new Actor(newSurNameActor, newNameActor, gender, height);
         for(int i = 0; i < listOfActors.size(); i++){
             if(oldSurNameActor.equals(listOfActors.get(i).surName) && oldNameActor.equals(listOfActors.get(i).name)) {
                 listOfActors.set(i, newActor);
-                System.out.println("Akter (" + oldSurNameActor + " " + oldNameActor + ") byl zamenen na " + newActor.toString());
+                System.out.println("Actor (" + oldSurNameActor + " " + oldNameActor + ") has been replaced " + newActor.toString());
                 break;
             }
         }
     }
+    */
 
 }
